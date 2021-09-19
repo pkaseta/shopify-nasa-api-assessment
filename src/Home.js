@@ -59,14 +59,17 @@ function Home() {
             {loadingDisplay ?
                 (
                     <div className='loading-display'>
+                    <div className='please-wait'>
                         <h1>Please Wait...</h1>
+                        <LoadingSpinner />
+                        </div>
                         <div className='load-screen'>
                             <div className='waiting-image'>
                                 <img src={WaitingAstronautImg} alt="Cartoon Astronaut" />
                             </div>
-                            <div className='loading-spinner'>
+                            {/* <div className='loading-spinner'>
                                 <LoadingSpinner />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 ) :
