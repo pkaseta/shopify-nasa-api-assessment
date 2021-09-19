@@ -1,35 +1,53 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Card, Button } from 'react-bootstrap'
-import CardAccordion from './CardAccordion'
+import './Cards.css'
+import ThumbsUp from '../Assets/Images/thumbsUp.png'
+import ThumbsDown from '../Assets/Images/thumbsDown.png'
 
 function Cards(props) {
+    const [liked, setLiked] = useState(false)
+    const [likeButtonImage, setLikeButtonImage] = useState(ThumbsDown)
+    const [altText, setAltText] = useState('Thumbs Up')
     const { apiCallData } = props
+
+    const likeButtonHandler = () => {
+        if(!liked){
+            setLiked(true)
+            setLikeButtonImage(ThumbsUp)
+            setAltText('Thumbs Down')
+            console.log('Liked')
+            return
+        }
+        setLiked(false)
+        setLikeButtonImage(ThumbsDown)
+        setAltText('Thumbs Up')
+        console.log('Not Like')
+    }
+
     return (
         <>
-            <Card style={{ width: '18rem', margin: 'auto', marginTop: '50px' }}>
+            <Card>
                 <Card.Header>
-                    <h4>{apiCallData.title}</h4>
+                   {apiCallData.copyright ? <h6>&copy; {apiCallData.copyright}</h6> : <h6>&copy; NASA</h6>}
                 </Card.Header>
 
                 {apiCallData.media_type === 'image' ? (
                     <Card.Img variant="top" src={apiCallData.hdurl} alt={apiCallData.title} />
-                ) : ''}
+                ) : apiCallData.media_type === 'video' ? (
+                    <video src={apiCallData.url} controls="controls" autoPlay={true} />
+                ) :
+                    ''}
 
                 <Card.Body>
-                    <Card.Title>{apiCallData.date}</Card.Title>
-                    <CardAccordion dataExplination={apiCallData.explanation} />
+                 <h6>{apiCallData.date}</h6>
+                    <Card.Title>{apiCallData.title}</Card.Title>
+                    {apiCallData.explanation}
                 </Card.Body>
 
-                {apiCallData.copyright ? (
                     <Card.Footer>
-                        &copy; {apiCallData.copyright}
+                    <Button variant='dark' onClick={likeButtonHandler}>{!liked ? 'Like' : 'Unlike'}</Button>
+                        <Card.Img src={likeButtonImage} alt={altText} />
                     </Card.Footer>
-                ) : (
-                    <Card.Footer>
-                        &copy; NASA
-                    </Card.Footer>
-                )}
-
             </Card>
         </>
     )

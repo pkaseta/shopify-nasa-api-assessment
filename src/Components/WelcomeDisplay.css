@@ -1,0 +1,33 @@
+.offCanvas-button-container{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.welcome-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 40vh;
+    width: 70vw;
+    border: 1px solid white;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 10px;
+    margin-top: 3vh;
+    background-color: rgba(0,0,0,0.6);
+}
+.welcome-div-inner-container{
+    margin: auto;
+    width: 60%;
+    height: 60%;
+    background-color: rgba(255,255,255,.8);
+    border-radius: 10px;
+}
+.welcome-div-inner-container p{
+    font-size: 2.5vh;
+    font-weight: bold;
+    margin-top: 1vh;
+    text-shadow: 3px 3px 5px grey;
+}

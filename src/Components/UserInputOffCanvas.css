@@ -1,0 +1,24 @@
+.offcanvas{
+    height: 80vh;
+}
+.offcanvas-body{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3 !important;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    margin-bottom: 2vh;
+}
+.offcanvas-header{
+    text-align: center;
+}
+.offcanvas-body div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.offcanvas-top{
+    height: 40vh !important;
+}

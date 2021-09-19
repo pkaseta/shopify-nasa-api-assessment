@@ -1,0 +1,14 @@
+.navbar-expand-lg{
+    background-color: rgba(117, 241, 200, 0.438);
+    border-bottom: 3px solid black;
+}
+#nasa-logo-img{
+    height: 50px;
+    width: 50px;
+}
+.navbar-brand{
+    cursor: pointer;
+}
+.nav-link{
+    color: white !important;
+}

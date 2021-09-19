@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import './Home.css'
 import Cards from './Components/Cards'
+import NavBar from './Components/NavBar'
+import WelcomeDisplay from './Components/WelcomeDisplay'
+import WaitingAstronautImg from '../src/Assets/Images/waitingAstronaut.png'
+import LoadingSpinner from './Components/LoadingSpinner'
 
 function Home() {
-    const [liked, setLiked] = useState(false)
-    const [nasaData, setNasaData] = useState({})
+    const [nasaData, setNasaData] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
+    const [welcomeDisplay, setWelcomeDisplay] = useState(true)
+    const [loadingDisplay, setLoadingDisplay] = useState(false)
 
     const API_KEY = [process.env.REACT_APP_NASA_API_KEY]
 
-    let nasaCards;
-
-
     const getNasaImages = async () => {
+        setLoadingDisplay(true)
         if (startDate && endDate) {
             let res = await fetch(
                 `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&start_date=${startDate}&end_date=${endDate}`
@@ -20,14 +25,17 @@ function Home() {
             const data = await res.json();
             // console.log(data)
             setNasaData(data);
+            setLoadingDisplay(false)
         }
         if (startDate && !endDate) {
+            setLoadingDisplay(true)
             let res = await fetch(
-                `https://api.nasa.gov/planetary/apod?date=${startDate}&api_key=${API_KEY}`
+                `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${startDate}`
             );
             const data = await res.json();
             // console.log(data)
             setNasaData(data);
+            setLoadingDisplay(false)
         }
         else return
     }
@@ -42,37 +50,60 @@ function Home() {
 
     const submitButtonHAndler = () => {
         getNasaImages()
-        nasaCards = (
-            <Cards apiCallData={nasaData} />
-        )
+        setWelcomeDisplay(false)
     }
     console.log(nasaData)
-    console.log(startDate, endDate)
     return (
-        <div>
-            <h2>Enter a starting date</h2>
-            <input type='date' name='startDate' onChange={setStartDateHandler}></input>
-            <br />
-
-            {startDate ?
+        <>
+            <NavBar />
+            {loadingDisplay ?
                 (
-                    <>
-                        <h2>Enter an ending date (Optional)</h2>
-                        <input type='date' name='endDate' onChange={setEndDateHandler}></input>
-                        <br />
-                        <button type='submit' onClick={submitButtonHAndler}>Get Images</button>
-                    </>
-                )
-                : ''}
-            {nasaData.copyright ? (
-                <Cards apiCallData={nasaData} />
-            ) : nasaData.length ? (
-                nasaData.map((data) => (
-                    <Cards apiCallData={data} />
-                ))
-            ) : ''}
+                    <div className='loading-display'>
+                        <h1>Please Wait...</h1>
+                        <div className='load-screen'>
+                            <div className='waiting-image'>
+                                <img src={WaitingAstronautImg} alt="Cartoon Astronaut" />
+                            </div>
+                            <div className='loading-spinner'>
+                                <LoadingSpinner />
+                            </div>
+                        </div>
+                    </div>
+                ) :
+                <>
+                    {welcomeDisplay && !nasaData.length && !nasaData.image ? (
+                        <WelcomeDisplay
+                            setStartDateHandler={setStartDateHandler}
+                            setEndDateHandler={setEndDateHandler}
+                            endDate={endDate}
+                            startDate={startDate}
+                            submitButtonHAndler={submitButtonHAndler}
+                            setStartDate={setStartDate}
+                            setEndDate={setEndDate}
+                        />
+                    ) : ''}
 
-        </div>
+                    {nasaData && !nasaData.length ? (
+                        <div className='home-container-main'>
+                        <div className='reset-button-container'>
+                            <Button variant='light' onClick={()=> window.location.reload()}> Restart </Button>
+                        </div>
+                            <Cards apiCallData={nasaData} />
+                        </div>
+                    ) : nasaData.length ? (
+                        <div className='home-container-main'>
+                          <div className='reset-button-container'>
+                            <Button variant='light' onClick={()=> window.location.reload()}> Restart </Button>
+                        </div>
+                            {nasaData.map((data) => (
+                                <Cards apiCallData={data} />
+                            ))}
+                        </div>
+                    )
+                        : ''}
+                </>
+            }
+        </>
     )
 }
 
