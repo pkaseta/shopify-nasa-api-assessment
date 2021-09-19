@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/shopify-nasa-api-assessment/static/css/main.2f8671b0.chunk.css",
-    "main.js": "/shopify-nasa-api-assessment/static/js/main.f9ef098f.chunk.js",
-    "main.js.map": "/shopify-nasa-api-assessment/static/js/main.f9ef098f.chunk.js.map",
+    "main.css": "/shopify-nasa-api-assessment/static/css/main.b3a51384.chunk.css",
+    "main.js": "/shopify-nasa-api-assessment/static/js/main.f901bff6.chunk.js",
+    "main.js.map": "/shopify-nasa-api-assessment/static/js/main.f901bff6.chunk.js.map",
     "runtime-main.js": "/shopify-nasa-api-assessment/static/js/runtime-main.558b6a20.js",
     "runtime-main.js.map": "/shopify-nasa-api-assessment/static/js/runtime-main.558b6a20.js.map",
     "static/css/2.ac82d3be.chunk.css": "/shopify-nasa-api-assessment/static/css/2.ac82d3be.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.18cda0b7.chunk.js.map": "/shopify-nasa-api-assessment/static/js/2.18cda0b7.chunk.js.map",
     "index.html": "/shopify-nasa-api-assessment/index.html",
     "static/css/2.ac82d3be.chunk.css.map": "/shopify-nasa-api-assessment/static/css/2.ac82d3be.chunk.css.map",
-    "static/css/main.2f8671b0.chunk.css.map": "/shopify-nasa-api-assessment/static/css/main.2f8671b0.chunk.css.map",
+    "static/css/main.b3a51384.chunk.css.map": "/shopify-nasa-api-assessment/static/css/main.b3a51384.chunk.css.map",
     "static/js/2.18cda0b7.chunk.js.LICENSE.txt": "/shopify-nasa-api-assessment/static/js/2.18cda0b7.chunk.js.LICENSE.txt",
     "static/media/nasaImg.555adec6.png": "/shopify-nasa-api-assessment/static/media/nasaImg.555adec6.png",
     "static/media/thumbsDown.c75e7788.png": "/shopify-nasa-api-assessment/static/media/thumbsDown.c75e7788.png",
@@ -21,7 +21,7 @@
     "static/js/runtime-main.558b6a20.js",
     "static/css/2.ac82d3be.chunk.css",
     "static/js/2.18cda0b7.chunk.js",
-    "static/css/main.2f8671b0.chunk.css",
-    "static/js/main.f9ef098f.chunk.js"
+    "static/css/main.b3a51384.chunk.css",
+    "static/js/main.f901bff6.chunk.js"
   ]
 }
